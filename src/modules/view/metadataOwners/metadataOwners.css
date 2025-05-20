@@ -1,0 +1,62 @@
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Spinner */
+
+.center {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+base-spinner {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Zero state */
+
+.no-podcast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+}
+
+.no-podcast .title {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: 500;
+}
+
+.no-podcast .message {
+    font-size: 0.875rem;
+    opacity: 0.6;
+}
+
+/* Grid view */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: calc(100vw / 4);
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: calc(100vw / 6);
+    }
+}
+
+.grid-item base-cover {
+    display: block;
+    width: 100%;
+}

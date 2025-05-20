@@ -1,0 +1,13 @@
+<template>
+    <base-header> Data </base-header>
+
+    <base-content class="with-header">
+        <template if:true={loading}>
+            <div class="center">
+                <base-spinner></base-spinner>
+            </div>
+        </template>
+
+        <template if:false={loading}> </template>
+    </base-content>
+</template>

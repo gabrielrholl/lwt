@@ -1,0 +1,67 @@
+<template>
+    <div class="slds-form-element">
+        <template if:false={hideLabel}>
+            <label class="slds-form-element__label">{label}</label>
+        </template>
+        <div class="slds-form-element__control">
+            <div class={comboboxContainerClass}>
+                <div class={comboboxClass} role="combobox">
+                    <template if:false={resultSelected}>
+                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" onkeyup={search}>
+                            <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" placeholder="Search..."/>
+                            <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                <lightning-icon icon-name="utility:search" alternative-text="Search" size="x-small"></lightning-icon>
+                            </span>
+                        </div>
+                    </template>
+                    <template if:true={resultSelected}>
+                        <div class={comboboxFormElementClass} role="none">
+                            <template if:false={hideIcons}>
+                                <span class="slds-icon_container slds-combobox__input-entity-icon" title={selected.alternateText}>
+                                    <lightning-icon icon-name={selected.iconName} size="small" alternative-text={selected.alternateText}></lightning-icon>
+                                </span>
+                            </template>
+                            <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" autocomplete="off" role="textbox" readonly value={selected.name} />
+                            <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option" onclick={handleDeselect}>
+                                <lightning-icon icon-name="utility:close" size="x-small"></lightning-icon>
+                                <span class="slds-assistive-text">Remove selected option</span>
+                            </button>
+                        </div>
+                    </template>
+                    <template if:true={searchPopOver}>
+                        <div class="slds-dropdown slds-dropdown_fluid" role="listbox">
+                            <template if:true={searchLoading}>
+                                <div class="slds-p-top_x-large slds-p-bottom_x-large slds-m-top_x-large slds-m-bottom_x-large slds-is-relative">
+                                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                                </div>
+                            </template>
+                            <template if:false={searchLoading}>
+                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown__list slds-dropdown_length-5" role="presentation">
+                                    <template for:each={searchResults} for:item="searchResult">
+                                        <li key={searchResult.id} class="slds-listbox__item" onclick={handleSelect} data-id={searchResult.id}>
+                                            <div class="slds-media slds-listbox__option slds-listbox__option_entity">
+                                                <template if:false={hideIcons}>
+                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                        <lightning-icon icon-name={searchResult.iconName} alternative-text={searchResult.alternateText} size="small"></lightning-icon>
+                                                    </span>
+                                                </template>
+                                                <span class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                                        <span>
+                                                            <mark>{searchResult.name}</mark>
+                                                        </span>
+                                                    </span>
+                                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{searchResult.subtitle}</span>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </template>
+                        </div>
+                    </template>    
+                </div>
+            </div>
+        </div>
+    </div>    
+</template>

@@ -1,0 +1,25 @@
+<template>
+    <base-navbar>
+        <ul class="slds-grid">
+            <template for:each={tabs} for:item="tab">
+                <li class={tab.class} key={tab.key}>
+                    <a href={tab.url} class="slds-context-bar__label-action" title={tab.label} onclick={handleTabClick}>
+                        <span class="slds-truncate" title={tab.label}>{tab.label}</span>
+                    </a>
+                </li>
+            </template>
+        </ul>
+    </base-navbar>
+
+    <div class="app">
+        <template if:true={view}>
+            <core-view
+                lwc:dynamic={view.component}
+                props={view.props}
+                onopenmenu={handleOpenMenuEvent}
+                onnavigate={handleNavigateEvent}
+                class="container"
+            ></core-view>
+        </template>
+    </div>
+</template>

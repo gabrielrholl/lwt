@@ -1,0 +1,63 @@
+<template>
+    <div class={containerClass}>
+        <template if:false={error}>
+            <template if:true={isLoaded}>
+                <lwchartjs-chart
+                    height="100%"
+                    width="100%"
+                    type={type}
+                    responsive="true"
+                    stylecss={styleCss}
+                    onlwccerror={handleError}
+                >
+                    <lwchartjs-dataset labels={dimensionsLabels}>
+                        <template for:each={details} for:item="data">
+                            <lwchartjs-data
+                                key={data.uuid}
+                                label={data.labels}
+                                detail={data.detail}
+                                fill={data.fill}
+                                bordercolor={data.bgColor}
+                                backgroundcolor={data.bgColor}
+                            ></lwchartjs-data>
+                        </template>
+                    </lwchartjs-dataset>
+                    <template if:true={title}>
+                        <lwchartjs-title
+                            text={title}
+                            fontfamily="'Salesforce Sans', Arial, sans-serif"
+                            fontcolor="rgb(8, 7, 7)"
+                        ></lwchartjs-title>
+                    </template>
+                    <lwchartjs-legend
+                        position={legendPosition}
+                        label-fontfamily="'Salesforce Sans', Arial, sans-serif"
+                        label-fontcolor="rgb(8, 7, 7)"
+                    ></lwchartjs-legend>
+                    <template if:false={isCircular}>
+                        <template if:false={isRadial}>
+                            <lwchartjs-cartesian-linear-axis
+                                axis="y"
+                                ticks-beginatzero="true"
+                            ></lwchartjs-cartesian-linear-axis>
+                        </template>
+                        <template if:true={isRadial}>
+                            <lwchartjs-radial-linear-axis ticks-beginatzero="true"></lwchartjs-radial-linear-axis>
+                        </template>
+                    </template>
+                </lwchartjs-chart>
+            </template>
+            <template if:false={isLoaded}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+        </template>
+        <template if:true={error}>
+            <div class="slds-illustration slds-m-vertical_small">
+                <div class="slds-text-longform">
+                    <h3 class="slds-text-heading_medium slds-text-color_error">{error}</h3>
+                    <p class="slds-text-body_regular">{stack}</p>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

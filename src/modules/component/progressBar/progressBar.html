@@ -1,0 +1,16 @@
+<template>
+    <div
+        class="progress-bar-thumb"
+        ontouchstart={handleProgressTouchStart}
+        onmousedown={handleProgressTouchStart}
+    ></div>
+
+    <div class="progress-bar">
+        <div class="progress-bar-value" style={progressBarValueStyle}></div>
+    </div>
+
+    <div class="label-container">
+        <span title="Past">{pastLabel}</span>
+        <span title="Remaining">{remainingLabel}</span>
+    </div>
+</template>

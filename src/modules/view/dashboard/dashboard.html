@@ -1,0 +1,120 @@
+<template>
+    <base-header> Discover </base-header>
+
+    <base-content class="with-header">
+        <div class="slds-grid slds-gutters_x-small slds-wrap slds-m-horizontal_small">
+            <div class="slds-col slds-size_1-of-1 slds-m-vertical_medium">
+                <lightning-card title="Dashboard"></lightning-card>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-card title="Deploys per Week">
+                    <div class="slds-p-around_small">
+                        <lwchartjs-chart slot="chartExample" type="line" responsive="true">
+                            <lwchartjs-dataset
+                                labels='["January", "February", "March", "April", "May", "June", "July"]'
+                            >
+                                <lwchartjs-data
+                                    label="My First dataset"
+                                    backgroundcolor="rgba(82, 183, 216, 1)"
+                                    bordercolor="rgba(82, 183, 216, 0.2)"
+                                    detail="[10, 30, 46, 2, 8, 50, 0]"
+                                    fill="false"
+                                >
+                                </lwchartjs-data>
+                                <lwchartjs-data
+                                    label="My Second dataset"
+                                    detail="[7, 49, 46, 13, 25, 30, 22]"
+                                    backgroundcolor="rgba(84, 167, 123, 1)"
+                                    bordercolor="rgba(84, 167, 123, 0.2)"
+                                    fill="false"
+                                >
+                                </lwchartjs-data>
+                            </lwchartjs-dataset>
+                            <lwchartjs-title text="Line Chart"></lwchartjs-title>
+                            <lwchartjs-tooltip position="nearest" mode="index" enabled="true"></lwchartjs-tooltip>
+                            <lwchartjs-line-configuration tension="0.4"></lwchartjs-line-configuration>
+                            <!-- <lwchartjs-cartesian-axis axis="x"
+                                                      position="top"
+                                                      type="category">
+                            </lwchartjs-cartesian-axis> -->
+                            <lwchartjs-cartesian-linear-axis
+                                axis="y"
+                                position="left"
+                                ticks-min="-10"
+                                title-display="true"
+                                title-labelstring="yAxis items"
+                                grid-zerolinecolor="rgba(225, 96, 50, 1"
+                                grid-zerolinewidth="3"
+                            >
+                            </lwchartjs-cartesian-linear-axis>
+                        </lwchartjs-chart>
+                    </div>
+                </lightning-card>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-card title="Health Check Score">
+                    <div class="slds-p-around_small">
+                        <lwchartjs-chart slot="chartExample" type="line" responsive="true">
+                            <lwchartjs-dataset
+                                labels='["January", "February", "March", "April", "May", "June", "July"]'
+                            >
+                                <lwchartjs-data
+                                    label="My First dataset"
+                                    detail="[10, 30, 46, 2, 8, 50, 0]"
+                                    bordercolor="rgba(119, 185, 242, 1)"
+                                    backgroundcolor="rgba(119, 185, 242, 0.2)"
+                                >
+                                </lwchartjs-data>
+                            </lwchartjs-dataset>
+                            <lwchartjs-title text="Line Chart"></lwchartjs-title>
+                        </lwchartjs-chart>
+                    </div>
+                </lightning-card>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning-card title="Daily Platform Errors">
+                    <div class="slds-p-around_small">
+                        <lwchartjs-chart
+                            slot="chartExample"
+                            type="bar"
+                            responsive="true"
+                            stylecss="position: relative; margin: auto;"
+                            events='["click"]'
+                        >
+                            <lwchartjs-dataset labels='["Blue", "Orange", "Yellow", "Green", "Light Blue", "Purple"]'>
+                                <lwchartjs-data
+                                    label="# of Votes"
+                                    detail="[12, 19, 7, 9, 5, 15]"
+                                    backgroundcolor='[
+                                                    "rgba(82, 183, 216, 0.2)",
+                                                    "rgba(225, 96, 50, 0.2)",
+                                                    "rgba(255, 176, 59, 0.2)",
+                                                    "rgba(84, 167, 123, 0.2)",
+                                                    "rgba(79, 210, 210, 0.2)",
+                                                    "rgba(226, 135, 178, 0.2)"
+                                                  ]'
+                                    bordercolor='[
+                                                    "rgba(82, 183, 216, 1)",
+                                                    "rgba(225, 96, 50, 1)",
+                                                    "rgba(255, 176, 59, 1)",
+                                                    "rgba(84, 167, 123, 1)",
+                                                    "rgba(79, 210, 210, 1)",
+                                                    "rgba(226, 135, 178, 1)"
+                                                  ]'
+                                    borderwidth="1"
+                                >
+                                </lwchartjs-data>
+                            </lwchartjs-dataset>
+                            <lwchartjs-title text="Bar Chart"></lwchartjs-title>
+                            <lwchartjs-legend position="right"></lwchartjs-legend>
+                            <lwchartjs-animation duration="2000" easing="easeInBounce"> </lwchartjs-animation>
+                            <!-- <lwchartjs-cartesian-category-axis axis="x"
+                                                               position="top">
+                            </lwchartjs-cartesian-category-axis> -->
+                        </lwchartjs-chart>
+                    </div>
+                </lightning-card>
+            </div>
+        </div>
+    </base-content>
+</template>

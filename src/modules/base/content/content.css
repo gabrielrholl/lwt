@@ -1,0 +1,10 @@
+:host {
+    flex: 1;
+
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+:host(.with-header) {
+    margin-top: var(--header-height);
+}

@@ -1,0 +1,24 @@
+<template>
+    <base-header>
+        <base-back-button slot="left"></base-back-button>
+        {title}
+    </base-header>
+
+    <base-content class="with-header">
+        <template if:true={podcast.isFetching}>
+            <div class="center">
+                <base-spinner></base-spinner>
+            </div>
+        </template>
+
+        <template if:true={podcast.error}>
+            <div class="center">
+                <component-loading-error
+                    class="center"
+                    error={podcast.error}
+                    onretry={loadShow}
+                ></component-loading-error>
+            </div>
+        </template>
+    </base-content>
+</template>

@@ -1,0 +1,29 @@
+<template>
+    <base-header> Documentation </base-header>
+
+    <base-content class="with-header">
+        <div class="slds-grid slds-gutters_x-small slds-wrap slds-m-horizontal_small">
+            <div class="slds-col slds-size_1-of-1 slds-m-vertical_medium">
+                <lightning-card title="Documentation"></lightning-card>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <lightning-card>
+                    <div data-id="navDiv" lwc:dom="manual"></div>        
+                </lightning-card>
+            </div>
+            <div class="slds-col slds-size_5-of-6">
+                <lightning-card>
+                    <div data-id="contentDiv" lwc:dom="manual"></div>        
+                </lightning-card>
+            </div>
+        </div>
+
+        <template if:true={loading}>
+            <div class="center">
+                <base-spinner></base-spinner>
+            </div>
+        </template>
+
+        <template if:false={loading}> </template>
+    </base-content>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <div class="card_wrapper">
+        <template for:each={projects} for:item="project">
+            <div class="stageContainer slds-m-top_small" key={project}>
+                <h1 class="column_heading">{project}</h1>
+                <ul class="slds-has-dividers_around-space" 
+                    ondrop={handleDrop}
+                    ondragover={handleDragOver}
+                    style="height:10vh;"
+                    data-id={project}>
+                </ul>
+            </div>
+        </template>
+    </div>
+</template>

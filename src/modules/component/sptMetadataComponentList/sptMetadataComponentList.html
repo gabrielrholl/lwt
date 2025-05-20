@@ -1,0 +1,22 @@
+<template>
+    <ul class="slds-has-dividers_around-space" 
+        ondragover={handleDragOver}
+        style="overflow-y:auto;">
+        <!-- style="height:70vh; overflow-y:auto;"> -->
+        <lightning-accordion allow-multiple-sections-open
+                             onsectiontoggle={handleToggleSection}>
+            <template for:each={recordsByType} for:item="typeRecords">
+                <lightning-accordion-section name={typeRecords.mdType} 
+                                            key={typeRecords.mdType}
+                                            label={typeRecords.mdType}>
+                    <template for:each={typeRecords.records} for:item="recordItem">
+                        <component-spt-metadata-component-card record={recordItem} 
+                                                        key={recordItem.id} 
+                                                        onitemdrag={handleItemDrag}>
+                        </component-spt-metadata-component-card>
+                    </template>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+    </ul>
+</template>

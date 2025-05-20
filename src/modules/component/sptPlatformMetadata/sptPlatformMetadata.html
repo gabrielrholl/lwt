@@ -1,0 +1,91 @@
+<template>
+    <div class="slds-grid slds-wrap slds-gutters_xx-small">
+        <div class="slds-col slds-size_2-of-8">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-box slds-theme_default">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-1">
+                                <component-spt-lookup label="Metadata Type"
+                                            search-results={lookupMdTypes} 
+                                            selected={selectedMdTypeObj}
+                                            onsearch={handleMetadataTypeSearch}
+                                            onselect={handleMetadataTypeSelect}
+                                            ondeselect={handleMetadataTypeRemove}
+                                            hide-icons>
+                                </component-spt-lookup>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1">
+                                <component-spt-lookup label="Metadata Component"
+                                            search-results={lookupMdCmps} 
+                                            selected={selectedMdCmpObj}
+                                            onsearch={handleMetadataComponentSearch}
+                                            onselect={handleMetadataComponentSelect}
+                                            ondeselect={handleMetadataComponentRemove}
+                                            hide-icons>
+                                </component-spt-lookup>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                    <template lwc:if={activeMdCmp}>
+                        <div class="slds-box slds-theme_default">
+                            <strong>Name: </strong><p>{activeMdCmp.fullName}</p>
+                            <strong>Id: </strong><p>{activeMdCmp.id}</p>
+                            <strong>Created By: </strong><p>{activeMdCmp.createdByName}</p>
+                            <strong>Created Date: </strong><p>{activeMdCmp.createdDate}</p>
+                            <strong>Last Modified By: </strong><p>{activeMdCmp.lastModifiedByName}</p>
+                            <strong>Last Modified Date: </strong><p>{activeMdCmp.lastModifiedDate}</p>
+                        </div>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                    <lightning-card title="Recent">
+                        <div class="slds-m-around_small">
+                            <template for:each={recentCmps} for:item="recentCmp">
+                                <div key={recentCmp.formattedName} class="slds-m-bottom_x-small">
+                                    <a data-id={recentCmp.id} onclick={handleRecentCmpClick}>
+                                        {recentCmp.formattedName}
+                                    </a>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-card>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-8">
+            <div class="slds-box slds-theme_default">
+                <component-spt-metadata-component-project onitemdrop={handleItemDrop}>
+                </component-spt-metadata-component-project>
+            </div>
+        </div>
+        <div class="slds-col slds-size_5-of-8">
+            <template lwc:if={isCmpSelected}>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-1">
+                        <div class="slds-box slds-theme_default">
+                            {selectedMdType}.{selectedMdCmp} is dependent on...
+                            <component-spt-metadata-component-list records={dependencies} 
+                                                            onlistitemdrag={handleListItemDrag}
+                                                            onitemdrop={handleItemDrop}>
+                            </component-spt-metadata-component-list>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <div class="slds-box slds-theme_default slds-m-top_medium">
+                            ... is dependent on {selectedMdType}.{selectedMdCmp} 
+                            <component-spt-metadata-component-list records={relDependencies} 
+                                                            onlistitemdrag={handleListItemDrag}
+                                                            onitemdrop={handleItemDrop}>
+                            </component-spt-metadata-component-list>
+                        </div>
+                        
+                    </div>
+                </div>
+            </template>
+            
+        </div>
+    </div>
+</template>

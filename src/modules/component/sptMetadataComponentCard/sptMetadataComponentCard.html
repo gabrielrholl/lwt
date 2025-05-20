@@ -1,0 +1,31 @@
+<template>
+    <li class="slds-item slds-var-m-around_small" draggable="true" ondragstart={itemDragStart}>
+        <article class="slds-tile slds-tile_board">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-checkbox">
+                        <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" checked="" />
+                        <label class="slds-checkbox__label" for="checkbox-unique-id-81">
+                          <span class="slds-checkbox_faux"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-6">
+                    {record.type}
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    {record.fullName}
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    {record.sObjectType}
+                </div>
+                <div class="slds-col slds-size_1-of-6">
+                    {record.createdByName}
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    {record.createdDate}
+                </div>
+            </div>
+        </article>
+    </li>
+</template>
