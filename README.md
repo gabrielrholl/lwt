@@ -53,4 +53,5 @@ This repository is intended to consolidate several different repos I've created 
 
 ## Notes
 - Research has revealed that synthetic shadow and base components are not supported by LWC/Vite SSR usage: https://developer.salesforce.com/docs/platform/lwr/guide/lwr-lbc-styling.html & https://developer.salesforce.com/docs/platform/lwc/guide/create-mixed-shadow.html#compare-native-shadow-with-synthetic-shadow. Therefore the effort to implement any sort of express SSR vite server comes with significant drawbacks for using this as a pre-development environment for Salesforce LWCs. The effort has been abandoned and replaced with an effort to merge the https://github.com/bfeist/vite-express-ts boilerplate into LWT.
+- Further research into static resource integration is warranted; this build currently leans heavily into the public folder. This link has some useful context into using images with vite: https://medium.com/@andrewmasonmedia/how-to-use-images-with-vite-and-vue-937307a150c0
 
